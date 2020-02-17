@@ -175,12 +175,96 @@ console.log(findAllPaths(myLargeMaze));
 console.log('-------------------------------');
 
 console.log('10. Anagrams');
+const anagrams = function(subject) {
+    let results = [];
+    if (subject.length === 0) {
+        return `You didn't give me anything!`;
+    };
+    if (subject.length === 1) {
+        results.push(subject);
+        return results;
+    };
+    for (let i = 0; i < subject.length; i++) {
+        const firstCharacter = subject[i];
+        const otherCharacters = subject.slice(0, i) + subject.slice(i + 1);
+        let innerAnagrams = anagrams(otherCharacters);
+        for (let j = 0; j < innerAnagrams.length; j++) {
+            if (!results.includes(firstCharacter + innerAnagrams[j])) {
+                results.push(firstCharacter + innerAnagrams[j])
+            }
+        };
+    };
+    return results;
+};
+console.log(anagrams('east'));
 console.log('-------------------------------');
-
 
 console.log('11. Organization Chart');
+const faceBookOrg = {
+    Zuckerberg: {
+        Schroepfer: {
+            Bosworth: {
+                Steve: {},
+                Kyle: {},
+                Andra: {}
+            },
+            Zhao: {
+                Richie: {},
+                Sofia: {},
+                Jen: {}
+            }
+        },
+        Schrage: {
+            VanDyck: {
+                Sabrina: {},
+                Michelle: {},
+                Josh: {}
+            },
+            Swain: {
+                Blanch: {},
+                Tom: {},
+                Joe: {}
+            }
+        },
+        Sandberg: {
+            Goler: {
+                Eddie: {},
+                Julie: {},
+                Annie: {}
+            },
+            Hernandez: {
+                Rowi: {},
+                Inga: {},
+                Morgan: {}
+            },
+            Moissinac: {
+                Amy: {},
+                Chuck: {},
+                Vinni: {}
+            },
+            Kelley: {
+                Eric: {},
+                Ana: {},
+                Wes: {}
+            }
+        }
+    }
+  };
+const orgChart = function(team, indent = '') {
+    let output = '';
+    if (Object.keys(team).length === 0) {
+        return '';
+    };
+    for (let person in team) {
+        output = output + indent + person + '\n' + orgChart(team[person], indent + '     ');
+    };
+    return output;
+};
+console.log(orgChart(faceBookOrg));
 console.log('-------------------------------');
 
-
 console.log('12. Binary Representation');
+const binary = function(num) {
+    
+}
 console.log('-------------------------------');
