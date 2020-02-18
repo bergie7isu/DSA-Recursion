@@ -265,6 +265,10 @@ console.log('-------------------------------');
 
 console.log('12. Binary Representation');
 const binary = function(num) {
-    
-}
-console.log('-------------------------------');
+    if (Math.floor(num / 2) === 0) {
+        return (num % 2).toString();
+    };
+    return binary(Math.floor(num / 2)) + (num % 2).toString();
+};
+console.log(binary(3));
+console.log(binary(25));
