@@ -272,3 +272,4 @@ const binary = function(num) {
 };
 console.log(binary(3));
 console.log(binary(25));
+console.log(binary(0));
